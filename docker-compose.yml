@@ -10,6 +10,20 @@ services:
       - 3000:3000
     environment:
       SKYNAME_CONFIG: "<skyname_config>"
-      POSTGRES_URL: "<postgres_url>"
+      POSTGRES_URL: "postgres://skyname:<postgres_password>@skyname-postgres/skyname"
       # TG_BOT_TOKEN: ""
       # TG_CHAT_ID: ""
+    networks:
+      - skyname
+  skyname-postgres:
+    container_name: skyname-postgres
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: "skyname"
+      POSTGRES_USER: "skyname"
+      POSTGRES_PASSWORD: "<postgres_password>"
+    networks:
+      - skyname
+networks:
+  skyname:
