@@ -1,0 +1,15 @@
+---
+version: "3"
+
+services:
+  skyname:
+    container_name: skyname
+    image: ghcr.io/darnfish/skyname:main
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      SKYNAME_CONFIG: "<skyname_config>"
+      POSTGRES_URL: "<postgres_url>"
+      # TG_BOT_TOKEN: ""
+      # TG_CHAT_ID: ""
