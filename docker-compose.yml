@@ -21,6 +21,8 @@ services:
     container_name: skyname-postgres
     image: postgres
     restart: unless-stopped
+    volumes:
+      - "/your/data/dir:/var/lib/postgresql/data:rw"
     environment:
       POSTGRES_DB: "skyname"
       POSTGRES_USER: "skyname"
