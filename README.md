@@ -23,24 +23,24 @@ yarn
 You will need to populate `SKYNAME_CONFIG` with a Base64 encoded JSON object to supply your owned domains and DNS providers. Here is a sample:
 ```json
 {
-	"domains": {
-		"example.com": {
-			"provider": "my-provider",
-			"zoneId": "<cf_zone_id>",
-			"disallowedSubdomains": [
-				"skyname"
-			]
-		}
-	},
-	"providers": {
-		"my-provider": {
-			"service": "cloudflare",
-			"token": "<cf_token>",
-			"attestation": {
-				"verified": true
-			}
-		}
-	}
+    "domains": {
+        "example.com": {
+            "provider": "my-provider",
+            "zoneId": "<cf_zone_id>",
+            "disallowedSubdomains": [
+                "skyname"
+            ]
+        }
+    },
+    "providers": {
+        "my-provider": {
+            "service": "cloudflare",
+            "token": "<cf_token>",
+            "attestation": {
+                "verified": true
+            }
+        }
+    }
 }
 ```
 
