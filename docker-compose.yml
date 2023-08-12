@@ -13,6 +13,8 @@ services:
       POSTGRES_URL: "postgres://skyname:<postgres_password>@skyname-postgres/skyname"
       # TG_BOT_TOKEN: ""
       # TG_CHAT_ID: ""
+    depends_on:
+      - skyname-postgres
     networks:
       - skyname
   skyname-postgres:
