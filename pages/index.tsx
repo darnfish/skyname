@@ -273,7 +273,7 @@ export default function Index() {
 									</div>
 									<div className="flex items-start mb-1">
 										<input className="mt-[5px]" type="checkbox" checked={confirmed} onChange={e => setConfirmed(_confirmed => !_confirmed)}></input>
-										<p className="ml-2 cursor-default" onClick={() => setConfirmed(_confirmed => !_confirmed)}>I am aware that by claiming <b>{username}</b> on Skyname by clicking the button below, I may permanently lose my current username, and that I am not guaranteed to keep this username for perpetuity.</p>
+										<p className="ml-2 cursor-default" onClick={() => setConfirmed(_confirmed => !_confirmed)}>I am aware that by registering <b>{username}</b> on Skyname by clicking the button below, I may permanently lose my current username, and that I am not guaranteed to keep this username for perpetuity.</p>
 									</div>
 									<div className="flex items-start mb-2">
 										<input className="mt-[5px]" type="checkbox" checked={setAsPrimaryUsername} onChange={e => setSetAsPrimaryUsername(_primary => !_primary)}></input>
@@ -293,7 +293,7 @@ export default function Index() {
 									) : (
 										isUsernameValid ? (
 											available ? (
-												`Claim ${username}`
+												`Register ${username}`
 											) : (
 												'This username is not available'
 											)
