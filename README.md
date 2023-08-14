@@ -46,7 +46,7 @@ You will need to populate `SKYNAME_CONFIG` with a Base64 encoded JSON object to 
 
 Once you have this file, save it to `config.json` and run the following command to copy the encoded Base64 string to clipboard so you can set as your `SKYNAME_CONFIG` environment variable:
 ```
-echo config.json | base64 | pbcopy -
+cat config.json | base64 | pbcopy -
 ```
 
 You will also need to set `POSTGRES_URL` to a PostgreSQL database. The database must have read write permissions and a table called `registrations` which can be created using the following SQL query:
