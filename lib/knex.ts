@@ -2,7 +2,10 @@ import Knex from 'knex'
 
 const knex = Knex({
 	client: 'pg',
-	connection: process.env.POSTGRES_URL
+	connection: {
+		connectionString: process.env.POSTGRES_URL,
+		ssl: false
+	}
 })
 
 export default knex
