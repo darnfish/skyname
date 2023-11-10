@@ -24,5 +24,5 @@ export default async function handler(
 	if(rows.length === 0)
 		return response.redirect('https://skyna.me')
 
-	response.redirect(`https://bsky.app/profile/${subdomain}.${domain}`)
+	response.redirect(`https://bsky.app/profile/${rows[0].actor}`)
 }
