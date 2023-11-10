@@ -1,5 +1,6 @@
-import knex from 'knex'
 import { NextApiRequest, NextApiResponse } from 'next'
+
+import knex from '../../lib/knex'
 
 export default async function handler(
 	request: NextApiRequest,
