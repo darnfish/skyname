@@ -87,22 +87,10 @@ export default async function handler(
 	 */
 	const existingRows = await knex('registrations').where({ subdomain, domain }).whereNull('invalidated_at')
 	if(existingRows.length > 0) {
-		// Check if the user is still valid
-		const [existingRow] = existingRows
+		// TODO: if username is not being used, throw
 
-		try {
-			await fetchUser(existingRow.actor, token, existingRow.server)
-
-			response.status(409).json({ error: 'Username already taken' })
-			return
-		} catch(error) {
-			// If user not found
-			if(error?.response?.data?.message === 'Profile not found') {
-				// Release handle
-				await knex('registrations').update({ invalidated_at: new Date() }).where('id', existingRow.id)
-			} else
-				throw error
-		}
+		response.status(409).json({ error: 'Username already taken' })
+		return
 	}
 
 	/**
