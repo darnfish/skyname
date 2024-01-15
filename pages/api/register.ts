@@ -110,7 +110,7 @@ export default async function handler(
 	 */
 	let previousUsername: string = user.handle
 
-	const previousUsernameRows = await knex('registrations').first().where({ actor: user.did }).whereNull('invalidated_at')
+	const previousUsernameRows = await knex('registrations').first().where({ actor: user.did, server }).whereNull('invalidated_at')
 	if(previousUsernameRows?.length > 0)
 		previousUsername = (previousUsernameRows[0] as RegistrationRow).previous_username
 

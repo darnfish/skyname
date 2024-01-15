@@ -54,7 +54,7 @@ export default async function handler(
 
 	switch(id) {
 	case 'default': {
-		const rows = await knex('registrations').where({ actor: user.did }).whereNull('invalidated_at')
+		const rows = await knex('registrations').where({ actor: user.did, server }).whereNull('invalidated_at')
 		if(rows.length === 0) {
 			response.status(401).send('')
 			return
@@ -67,7 +67,7 @@ export default async function handler(
 		break
 	}
 	default: {
-		const rows = await knex('registrations').where({ id, actor: user.did }).whereNull('invalidated_at')
+		const rows = await knex('registrations').where({ id, actor: user.did, server }).whereNull('invalidated_at')
 		if(rows.length === 0) {
 			response.status(401).send('')
 			return

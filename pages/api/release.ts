@@ -56,7 +56,7 @@ export default async function handler(
 	/**
 	 * Check if user owns username
 	 */
-	const rows = await knex('registrations').where({ id, actor: user.did }).whereNull('invalidated_at')
+	const rows = await knex('registrations').where({ id, actor: user.did, server }).whereNull('invalidated_at')
 	if(rows.length === 0) {
 		response.status(401).json({ error: 'Username not found' })
 		return
@@ -84,7 +84,7 @@ export default async function handler(
 	let previousUsername: string = row.previous_username
 
 	if(isUsingReleasedUsername) {
-		const previousUsernameRows = await knex('registrations').first().where({ actor: user.did }).whereNull('invalidated_at')
+		const previousUsernameRows = await knex('registrations').first().where({ actor: user.did, server }).whereNull('invalidated_at')
 		if(previousUsernameRows?.length > 0)
 			previousUsername = `${(previousUsernameRows[0] as RegistrationRow).subdomain}.${(previousUsernameRows[0] as RegistrationRow).domain}`
 	

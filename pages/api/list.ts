@@ -44,7 +44,7 @@ export default async function handler(
 	/**
 	 * Find all usernames
 	 */
-	const rows = await knex('registrations').where({ actor: user.did }).whereNull('invalidated_at')
+	const rows = await knex('registrations').where({ actor: user.did, server }).whereNull('invalidated_at')
 
 	/**
 	 * Transform
