@@ -87,7 +87,7 @@ export default async function handler(
 	 */
 	const existingRows = await knex('registrations').where({ subdomain, domain }).whereNull('invalidated_at')
 	if(existingRows.length > 0) {
-		// TODO: if username is not being used, throw
+		// TODO: check if username is not being used, if not, allow
 
 		response.status(409).json({ error: 'Username already taken' })
 		return
